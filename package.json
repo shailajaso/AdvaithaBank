@@ -1,7 +1,7 @@
 {
   "name": "MonolothicBank",
   "version": "1.0.0",
-  "description": "kiran.palla@gmail.com",
+  "description": "kirankumar.palla@gmail.com",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

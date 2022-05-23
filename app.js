@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 const internetbanking = require('./routes/internetbanking/internetbanking.js')
-const loan = require('./routes/loan/loan.js')
+const loan = require('./routes/loan/loan.js') // this is changes doen by priyanka for issue8
 const shopping = require('./routes/shopping/shopping.js')
 const creditcard = require('./routes/creditcard/creditcard.js')
 
