@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    a: demo1
+    p: q
+    aaa: bbb
+  name: demopod12
+spec:
+  containers:
+    - image: nginx
+      name: demo
+      ports:
+        - containerPort: 8080
+      imagePullPolicy: Always
+      resources: {}
+  restartPolicy: Always
