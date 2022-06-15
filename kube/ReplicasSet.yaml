@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: webapp
+  name: myreplicaset
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      run: demo1
+  template:
+    metadata:
+      labels:
+        run: demo1
+      name: demo1
+    spec:
+      containers:
+        - image: charankumarcpl/kubernetes:home
+          name: samplecontainer
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          resources: {}
+      restartPolicy: Always
+

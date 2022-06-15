@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploymentpod
+  labels:
+    app: mydeploymentpod
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: mydeploymentpod
+  template:
+    metadata:
+      labels:
+        app: mydeploymentpod
+    spec:
+      containers:
+        - name: deploymentpodynodepod
+          image: docker.io/charankumarcpl/kubernetes:kube-update

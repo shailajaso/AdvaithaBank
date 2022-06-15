@@ -1,0 +1,62 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploymentpod
+  labels:
+    app: mydeploymentpod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mydeploymentpod
+  template:
+    metadata:
+      labels:
+        app: mydeploymentpod
+    spec:
+      containers:
+        - name: deploymentpodynodepod
+          image: docker.io/charankumarcpl/kubernetes:countryname
+          # countryName=INDIA
+          env:
+            - name: countryName
+              valueFrom:
+                configMapKeyRef:
+                  name: myapp-configmap
+                  key: countryName
+          resources:
+            limits:
+              memory: "50Mi"
+              cpu: 10m
+            requests:
+              memory: "10Mi"
+              cpu: 10m
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-kubenode-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 32700
+      targetPort: 8080
+  selector:
+    app: mydeploymentpod
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    mylable: charan
+  name: myapp-configmap
+data:
+  name: charan
+  job: software
+  countryName: USA
